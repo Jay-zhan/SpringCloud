@@ -1,0 +1,29 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: cloud-server
+  profiles: slave1
+eureka:
+  client:
+    instanceInfoReplicationIntervalSeconds: 10 #多台发现服务的服务器之间会复制服务列表，进行更新所需要的时间间隔（s），默认为30秒,例如：健康检查机制更新时间，up和down的变化更新
+    serviceUrl:
+      defaultZone: http://localhost:8762/eureka
+#  server:
+#    enable-self-preservation: false #自我保护机制，默认开启
+#    eviction-interval-timer-in-ms: 10000 #服务器清理服务列表的定时器，默认60s，注意时间是毫秒
+---
+server:
+  port: 8762
+spring:
+  application:
+    name: cloud-server
+  profiles: slave2
+eureka:
+  client:
+    instanceInfoReplicationIntervalSeconds: 10
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+#  server:
+#    enable-self-preservation: false
+#    eviction-interval-timer-in-ms: 10000

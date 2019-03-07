@@ -1,0 +1,27 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: sup-cloud-police
+  profiles: sup01
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5 #表示eureka client发送心跳给server端的频率，默认为30秒
+    leaseExpirationDurationInSeconds: 10 #表示eureka server至上一次收到client的心跳之后心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该instance，默认为90秒
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+---
+server:
+  port: 8082
+spring:
+  application:
+    name: sup-cloud-police
+  profiles: sup02
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/

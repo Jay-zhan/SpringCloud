@@ -1,0 +1,10 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: consume-cloud-person
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5 #消费端间隔30s去客户端server抓取一次服务列表，默认30s
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
